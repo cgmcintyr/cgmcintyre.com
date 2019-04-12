@@ -1,0 +1,37 @@
+{% import "macros.html" as macros %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ get_url(path="css/pure-base-min.css") }}">
+  <link rel="stylesheet" href="{{ get_url(path="main.css") }}">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.title }}</title>
+  <meta name="author" content="Christopher McIntyre">
+  <meta
+    name="description"
+    content="{% if page.content %}{{ page.content | safe | striptags | truncate }}{% else %}{{ config.description }}{% endif %}"
+  >
+
+  {{ macros::head_opengraph() }}
+  {{ macros::head_twitter_card() }}
+  {{ macros::head_favicon() }}
+  {{ macros::head_rss() }}
+
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
+<body>
+  <div class="container">
+    {% block body %}
+    {% endblock body %}
+    <footer class="container-footer">
+      © 2017-2018 <a href="{{ get_url(path="/") }}">Christopher George McIntyre</a>. Powered by <a href="https://www.getzola.org/">Zola</a>.
+    </footer>
+  </div>
+</body>
+</html>

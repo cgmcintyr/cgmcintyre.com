@@ -1,0 +1,28 @@
+{% extends "section.html" %}
+
+{% block content %}
+    <article class="post-body">
+        {{ macros::post_header(page=page) }}
+
+        <main>
+            {% if page.extra.note %}
+                <aside class="post-body__note">
+                    <h3 class="post-body__note__title">Hey, listen!</h3>
+                    <p class="post-body__note__text">{{ page.extra.note | markdown(inline=true) }}</p>
+                </aside>
+            {% endif %}
+
+            {{ page.content | safe }}
+
+
+            <script src="https://utteranc.es/client.js"
+                repo="cgmcintyr/cgmcintyre.com"
+                issue-term="url"
+                theme="github-light"
+                label="comment"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </main>
+    </article>
+{% endblock content %}

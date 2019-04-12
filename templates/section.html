@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block body %}
+
+<header class="pure-menu pure-menu-horizontal horizontal-nav container-header">
+  <div class="pure-menu-heading">Christopher G. McIntyre</div>
+  <div class="horizontal-nav-expander"></div>
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+    <li class="pure-menu-item"><a href="/posts" class="pure-menu-link">Blog</a></li>
+  </ul>
+</header>
+
+<main class="site-content container-main">
+  {% block content %}
+    <div class="posts">
+      {% set posts = get_section(path="posts/_index.md") %}
+      {% for page in posts.pages %}
+        {{ macros::post_header(page=page, excerpt=true) }}
+      {% endfor %}
+    </div>
+  {% endblock content %}
+</main>
+
+
+{% endblock body %}

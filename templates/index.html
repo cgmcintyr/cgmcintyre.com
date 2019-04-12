@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+
+{% block body %}
+
+<main class="container-main index">
+  <img src="/images/me.png" alt="Author Image" class="index-item index-headshot">
+  <h1 class="index-item">{{ config.title }}</h1>
+  <ul class="index-item nav">
+    <li><a href="{{ get_url(path="posts") }}">Blog</a></li>
+    <li><a href="{{ get_url(path="resume.pdf") }}"}}">Résumé</a></li>
+  </ul>
+  <ul class="index-item index-social">
+    <li>{{ macros::icon(icon="icon-mail", href="mailto:me@cgmcintyre.com", label="Email") }}</li>
+    <li>{{ macros::icon(icon="icon-github", href="https://github.com/cgmcintyr", label="GitHub") }}</li>
+    <li>{{ macros::icon(icon="icon-twitter", href="https://twitter.com/cgmcintyr", label="Twitter") }}</li>
+  </ul>
+</main>
+
+{% endblock body %}
