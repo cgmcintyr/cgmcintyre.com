@@ -2,13 +2,13 @@
 
 {% block body %}
 
-<header class="pure-menu pure-menu-horizontal horizontal-nav container-header">
-  <div class="pure-menu-heading">Christopher G. McIntyre</div>
-  <div class="horizontal-nav-expander"></div>
-  <ul class="pure-menu-list">
-    <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
-    <li class="pure-menu-item"><a href="/posts" class="pure-menu-link">Blog</a></li>
-  </ul>
+<header>
+  <nav>
+    <ul>
+    <li><a href="{{ get_url(path="/") }}">Home</a></li>
+    <li><a href="{{ get_url(path="posts") }}">Blog</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main class="site-content container-main">
