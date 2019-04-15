@@ -1,7 +1,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://cgmcintyre.com/tags/rust/</loc>
+            <loc>https://cgmcintyre.com/</loc>
             
         </url>
     
@@ -13,22 +13,22 @@
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/posts/</loc>
-            
-        </url>
-    
-        <url>
             <loc>https://cgmcintyre.com/tags/</loc>
             
         </url>
     
         <url>
+            <loc>https://cgmcintyre.com/tags/rust/</loc>
+            
+        </url>
+    
+        <url>
             <loc>https://cgmcintyre.com/tags/website/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://cgmcintyre.com/posts/</loc>
             
         </url>
     
