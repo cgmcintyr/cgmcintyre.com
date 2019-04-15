@@ -1,19 +1,19 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Christopher G. Mcintyre</title>
-        <link>http://cgmcintyre.com</link>
+        <link>https://cgmcintyre.com</link>
         <description>Christopher G. McIntyre&#x27;s Personal Website
 </description>
         <generator>Zola</generator>
         <language>en</language>
-        <atom:link href="http://cgmcintyre.com/tags/website/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://cgmcintyre.com/tags/website/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Thu, 11 Apr 2019 00:00:00 +0000</lastBuildDate>
         
             <item>
                 <title>Hello, Zola!</title>
                 <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
-                <link>http://cgmcintyre.com/posts/hello-zola/</link>
-                <guid>http://cgmcintyre.com/posts/hello-zola/</guid>
+                <link>https://cgmcintyre.com/posts/hello-zola/</link>
+                <guid>https://cgmcintyre.com/posts/hello-zola/</guid>
                 <description>&lt;p&gt;For the past couple of years I&#x27;ve used &lt;a href=&quot;https:&#x2f;&#x2f;gohugo.io&#x2f;&quot;&gt;Hugo&lt;&#x2f;a&gt; for my
 personal website &lt;a href=&quot;http:&#x2f;&#x2f;cgmcintyre.com&quot;&gt;cgmcintyre.com&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
 &lt;p&gt;I picked Hugo for its popularity, and got up and running super quick with
