@@ -1,6 +1,6 @@
 BASEDIR:=$(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))
 ZOLA:=$(BASEDIR)/bin/zola
-BASEURL="https://cgmcintyre.com"
+BASEURL="http://cgmcintyre.com"
 
 
 .PHONY: serve

@@ -2,7 +2,7 @@ title = "Christopher G. Mcintyre"
 description = """
 Christopher G. McIntyre's Personal Website
 """
-base_url = "https://cgmcintyre.com"
+base_url = "http://cgmcintyre.com"
 compile_sass = true
 highlight_code = true
 generate_rss = true

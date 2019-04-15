@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://cgmcintyre.com/sitemap.xml
+Sitemap: http://cgmcintyre.com/sitemap.xml

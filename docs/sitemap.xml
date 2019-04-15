@@ -1,34 +1,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://cgmcintyre.com/tags/website/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/tags/rust/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/posts/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/posts/hello-zola/</loc>
+            <loc>http://cgmcintyre.com/posts/hello-zola/</loc>
             
                 <lastmod>2019-04-11</lastmod>
             
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/tags/</loc>
+            <loc>http://cgmcintyre.com/posts/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>http://cgmcintyre.com/tags/rust/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>http://cgmcintyre.com/tags/website/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>http://cgmcintyre.com/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>http://cgmcintyre.com/tags/</loc>
             
         </url>
     
