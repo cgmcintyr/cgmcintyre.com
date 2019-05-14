@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;css&#x2f;pure-base-min.css">
+  <link rel="stylesheet" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;main.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Ansible HTTP Proxying with mitmproxy - Christopher G. Mcintyre</title>
+  <meta name="author" content="Christopher McIntyre">
+  <meta
+    name="description"
+    content="I've been using ansible for provisioning recently, and bumped into
+a situation where I wanted to share my local machine's internet connection
+with a remote machine that's isolated from the internet.
+The solution involved using the -R localhost:3128 option…"
+  >
+
+  
+  <meta property="og:title" content="Ansible HTTP Proxying with mitmproxy - Christopher G. Mcintyre">
+  <meta property="og:site_name" content="Christopher G. Mcintyre">
+  <meta property="og:image" content="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;apple-touch-icon.png">
+  <meta property="og:type" content="website">
+
+  
+  <meta name="twitter:title" content="Ansible HTTP Proxying with mitmproxy - Christopher G. Mcintyre">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@cgmcintyr">
+  <meta name="twitter:creator" content="@cgmcintyr">
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;favicon-16x16.png">
+  <link rel="manifest" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;site.webmanifest">
+  <link rel="mask-icon" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="RSS"
+    href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;rss.xml"
+  >
+  
+
+
+  
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+</head>
+<body>
+  <div class="container">
+    
+
+<header>
+  <nav>
+    <ul>
+    <li><a href="https:&#x2f;&#x2f;cgmcintyre.com">Home</a></li>
+    <li><a href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;posts">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="site-content container-main">
+  
+    <article class="post-body">
+        
+    <header class="post-header">
+        <h1 class="post-header__title">
+            <a href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;posts&#x2f;ansible-sharing-internet&#x2f;">
+                Ansible HTTP Proxying with mitmproxy
+            </a>
+        </h1>
+        <p class="post-header__info">
+            
+                <a class="post-header__timestamp" href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;posts&#x2f;ansible-sharing-internet&#x2f;">
+                    <time datetime="2019-04-11">
+                        April 11, 2019
+                    </time>
+                </a>
+            
+            
+                
+                    &bull;
+                    <a href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;tags&#x2f;ansible&#x2f;">ansible</a>
+                
+                    &bull;
+                    <a href="https:&#x2f;&#x2f;cgmcintyre.com&#x2f;tags&#x2f;devops&#x2f;">devops</a>
+                
+            
+        </p>
+        
+    </header>
+
+
+        <main>
+            
+
+            <p>I've been using ansible for provisioning recently, and bumped into
+a situation where I wanted to share my local machine's internet connection
+with a remote machine that's isolated from the internet.</p>
+<p>The solution involved using the <code>-R localhost:3128</code> option of the <code>ssh</code>
+command to forward TCP traffic from the remote machine's port <code>3128</code> to my
+local port <code>3128</code>.</p>
+<p>To use this option we can add <code>ansible_ssh_extra_args</code> to our host in the
+inventory:</p>
+<pre style="background-color:#ffffff;">
+<span style="color:#898989;"># inventory
+</span><span style="color:#877611;">[network_isolated]
+</span><span style="color:#696989;">remote </span><span style="color:#010101;">ansible_ssh_extra_args</span><span style="color:#016692;">=</span><span style="color:#009f78;">&quot;-R localhost:3128&quot;
+</span></pre>
+<p>Using the <code>environment</code> key we can tell our remote hosts to use
+<code>localhost:3128</code> as a <code>HTTP</code> proxy:</p>
+<pre style="background-color:#ffffff;">
+<span style="color:#898989;"># playbook.yaml
+</span><span style="color:#010101;">- </span><span style="color:#00528b;">hosts</span><span style="color:#010101;">: </span><span style="color:#00528b;">network_isolated
+  environment</span><span style="color:#010101;">:
+    </span><span style="color:#00528b;">http_proxy</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    https_proxy</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    no_proxy</span><span style="color:#010101;">: </span><span style="color:#009f78;">&quot;localhost,127.0.0.1&quot;
+    </span><span style="color:#00528b;">HTTP_PROXY</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    HTTPS_PROXY</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    NO_PROXY</span><span style="color:#010101;">: </span><span style="color:#009f78;">&quot;localhost,127.0.0.1&quot;
+  </span><span style="color:#00528b;">tasks</span><span style="color:#010101;">:
+    - </span><span style="color:#00528b;">name</span><span style="color:#010101;">: </span><span style="color:#00528b;">GET http://google.com
+      command</span><span style="color:#010101;">: </span><span style="color:#00528b;">wget http://google.com
+    </span><span style="color:#010101;">- </span><span style="color:#00528b;">name</span><span style="color:#010101;">: </span><span style="color:#00528b;">GET https://google.com
+      command</span><span style="color:#010101;">: </span><span style="color:#009f78;">wget https://google.com
+</span></pre>
+<p>So now <code>HTTP/S</code> traffic on our remote host is forwarded over the ansible
+SSH connection to our local port <code>3128</code>. The next step is to ensure our
+local machine is forwarding <code>HTTP/S</code> traffic on this port.</p>
+<p>I chose to use <a href="https://mitmproxy.org/">mitmproxy</a> as it's incredibly
+simple to setup:</p>
+<pre style="background-color:#ffffff;">
+<span style="color:#898989;"># playbook.yaml
+
+</span><span style="color:#010101;">- </span><span style="color:#00528b;">hosts</span><span style="color:#010101;">: </span><span style="color:#00528b;">network_isolated
+  environment</span><span style="color:#010101;">:
+    </span><span style="color:#00528b;">http_proxy</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    https_proxy</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    no_proxy</span><span style="color:#010101;">: </span><span style="color:#009f78;">&quot;localhost,127.0.0.1&quot;
+    </span><span style="color:#00528b;">HTTP_PROXY</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    HTTPS_PROXY</span><span style="color:#010101;">: </span><span style="color:#00528b;">http://localhost:3128
+    NO_PROXY</span><span style="color:#010101;">: </span><span style="color:#009f78;">&quot;localhost,127.0.0.1&quot;
+  </span><span style="color:#00528b;">pre_tasks</span><span style="color:#010101;">:
+    - </span><span style="color:#00528b;">name</span><span style="color:#010101;">: </span><span style="color:#00528b;">Start mitmproxy
+      shell</span><span style="color:#010101;">: </span><span style="color:#009f78;">&quot;(mitmdump -p 3128 --ignore :443$ 2&gt;&amp;1 1&gt;/dev/null &amp;)&quot;
+      </span><span style="color:#00528b;">delegate_to</span><span style="color:#010101;">: </span><span style="color:#00528b;">localhost
+  tasks</span><span style="color:#010101;">:
+    - </span><span style="color:#00528b;">name</span><span style="color:#010101;">: </span><span style="color:#00528b;">GET http://google.com
+      command</span><span style="color:#010101;">: </span><span style="color:#00528b;">wget http://google.com
+    </span><span style="color:#010101;">- </span><span style="color:#00528b;">name</span><span style="color:#010101;">: </span><span style="color:#00528b;">GET https://google.com
+      command</span><span style="color:#010101;">: </span><span style="color:#009f78;">wget https://google.com
+</span></pre>
+<p>We are using <code>mitmdump</code> which is essentially <code>mitmproxy</code> without the nifty
+interface. The <code>-p 3128</code> flag tells <code>mitmdump</code> to listen on port <code>3128</code>,
+the <code>--ignore :443$</code> flag makes sure we don't intercept <code>HTTPS</code> traffic,
+which would cause problems with our remote hose finding unexpected TLS
+certs.</p>
+
+
+
+            <script src="https://utteranc.es/client.js"
+                repo="cgmcintyr/cgmcintyre.com"
+                issue-term="url"
+                theme="github-light"
+                label="comment"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </main>
+    </article>
+
+</main>
+
+
+
+    <footer class="container-footer">
+      © 2017-2018 <a href="https:&#x2f;&#x2f;cgmcintyre.com">Christopher George McIntyre</a>. Powered by <a href="https://www.getzola.org/">Zola</a>.
+    </footer>
+  </div>
+</body>
+</html>

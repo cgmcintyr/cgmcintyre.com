@@ -204,3 +204,11 @@ nav {
   list-style-type: none;
   padding: 0;
 }
+
+code, kbd, pre, samp {
+  background-color: white;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  font-family: monospace,monospace;
+  font-size: 1em;
+}

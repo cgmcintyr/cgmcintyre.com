@@ -6,7 +6,7 @@
 </description>
         <generator>Zola</generator>
         <language>en</language>
-        <atom:link href="https://cgmcintyre.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://cgmcintyre.com/tags/ansible/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Thu, 11 Apr 2019 00:00:00 +0000</lastBuildDate>
         
             <item>
@@ -76,28 +76,6 @@ interface. The &lt;code&gt;-p 3128&lt;&#x2f;code&gt; flag tells &lt;code&gt;mitm
 the &lt;code&gt;--ignore :443$&lt;&#x2f;code&gt; flag makes sure we don&#x27;t intercept &lt;code&gt;HTTPS&lt;&#x2f;code&gt; traffic,
 which would cause problems with our remote hose finding unexpected TLS
 certs.&lt;&#x2f;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Hello, Zola!</title>
-                <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
-                <link>https://cgmcintyre.com/posts/hello-zola/</link>
-                <guid>https://cgmcintyre.com/posts/hello-zola/</guid>
-                <description>&lt;p&gt;For the past couple of years I&#x27;ve used &lt;a href=&quot;https:&#x2f;&#x2f;gohugo.io&#x2f;&quot;&gt;Hugo&lt;&#x2f;a&gt; for my
-personal website &lt;a href=&quot;http:&#x2f;&#x2f;cgmcintyre.com&quot;&gt;cgmcintyre.com&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
-&lt;p&gt;I picked Hugo for its popularity, and got up and running super quick with
-the &lt;a href=&quot;https:&#x2f;&#x2f;themes.gohugo.io&#x2f;minimo&#x2f;&quot;&gt;minimo&lt;&#x2f;a&gt; theme. However I haven&#x27;t
-really done much with the site since I put it up...&lt;&#x2f;p&gt;
-&lt;p&gt;I think part of the reason for this is that using someone elses theme made
-the process of generating the site a bit too magic. I looked into
-designing a Hugo theme, but I&#x27;m not used to go templating and found that
-Hugo was maybe a bit too powerful for my simple use case.&lt;&#x2f;p&gt;
-&lt;p&gt;So, I&#x27;ve moved my site to &lt;a href=&quot;https:&#x2f;&#x2f;www.getzola.org&quot;&gt;Zola&lt;&#x2f;a&gt;, a simple static
-site generator written in Rust. I&#x27;ve designed the theme for my website
-from scratch, which has helped me feel comfortable. My &lt;code&gt;config.toml&lt;&#x2f;code&gt; file
-feels light, and I&#x27;m happy with how Zola works under the hood :)&lt;&#x2f;p&gt;
-&lt;p&gt;Here&#x27;s to a more active site!&lt;&#x2f;p&gt;
 </description>
             </item>
         
