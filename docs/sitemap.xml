@@ -6,19 +6,24 @@
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/posts/ansible-sharing-internet/</loc>
+            <loc>https://cgmcintyre.com/posts/hello-zola/</loc>
             
                 <lastmod>2019-04-11</lastmod>
             
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/tags/devops/</loc>
+            <loc>https://cgmcintyre.com/</loc>
             
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/</loc>
+            <loc>https://cgmcintyre.com/tags/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://cgmcintyre.com/tags/devops/</loc>
             
         </url>
     
@@ -33,19 +38,14 @@
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/tags/website/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/posts/hello-zola/</loc>
+            <loc>https://cgmcintyre.com/posts/ansible-sharing-internet/</loc>
             
                 <lastmod>2019-04-11</lastmod>
             
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/tags/</loc>
+            <loc>https://cgmcintyre.com/tags/website/</loc>
             
         </url>
     

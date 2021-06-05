@@ -70,8 +70,10 @@
 
 {% macro icon(icon, href, label) %}
 <a href="{{ href }}" aria-label="{{ label }}">
-  <svg class="icon {{ icon }}" aria-hidden="true">
-    <use xlink:href="{{ get_url(path="symbol-defs.svg") }}#{{ icon }}"></use>
-  </svg>
+  {% set svg = load_data(path="static/icons/" ~ icon ~ ".svg") %}
+  <span style="white-space:nowrap">
+    <span class="icon">{{ svg | safe }}</span>
+    <span class="label">{{ label }}</span>
+  </span>
 </a>
 {% endmacro icon %}

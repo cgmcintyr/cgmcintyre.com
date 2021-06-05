@@ -81,7 +81,7 @@ nav {
       margin: 0 auto 1.4rem;
   }
 
-  & img {
+  & img.avatar {
       display: block;
       width: 200px;
       height: 200px;
@@ -105,7 +105,7 @@ nav {
 
 .index-social li {
     display: inline;
-    margin: 0 0.5rem;
+    margin: 0 1rem;
 }
 
 
@@ -168,41 +168,23 @@ nav {
     }
 }
 
-
 .icon {
     display: inline-block;
-    width: 2em;
-    height: 2em;
+    width: 24px;
+    height: 24px;
     stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
 }
 
-
-.icon-twitter {
-    width: 0.9287109375*2em;
+.label {
+    font-size: 24px;
 }
 
-
-.icon-github {
-    width: 0.857421875*2em;
-}
-
-
-.icon-mail {
-    width: 0.857421875*2em;
-}
-
-
-.icon-rss {
-    width: 0.7861328125*2em;
-}
-
-
-.nav {
-  font-size: 1.4rem;
-  list-style-type: none;
-  padding: 0;
+.icon,
+.label {
+  vertical-align: middle;
+  display: inline-block;
 }
 
 code, kbd, pre, samp {
