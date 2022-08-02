@@ -3,10 +3,11 @@
 {% block body %}
 
 <main class="container-main index">
-  <img src="/images/me.png" alt="Author Image" class="index-item index-headshot avatar">
-  <h1 class="index-item">{{ config.title }}</h1>
+  <h1 class="index-item">
+      <span>{{ config.title }}</span>
+      <span class="subtitle">Software Engineer</span>
+  </h1>
   <ul class="index-item index-social">
-    <li>{{ macros::icon(icon="edit", href=get_url(path="posts"), label="Blog") }}</li>
     <li>{{ macros::icon(icon="github", href="https://github.com/cgmcintyr", label="GitHub") }}</li>
     <li>{{ macros::icon(icon="mail", href="mailto:me@cgmcintyre.com", label="Email") }}</li>
   </ul>

@@ -1,6 +1,6 @@
-title = "Christopher G. Mcintyre"
+title = "Chris G. Mcintyre"
 description = """
-Christopher G. McIntyre's Personal Website
+Chris G. McIntyre's Personal Website
 """
 base_url = "https://cgmcintyre.com"
 compile_sass = true

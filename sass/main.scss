@@ -18,6 +18,12 @@ html,body {
     margin: 0;
 }
 
+h1 .subtitle {
+    font-size: 0.8em;
+    color: #999;
+    display: block;
+    margin-top: -0.5em;
+}
 
 a {
     color: $primary-color !important;

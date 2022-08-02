@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Christopher G. Mcintyre</title>
+        <title>Chris G. Mcintyre</title>
         <link>https://cgmcintyre.com</link>
-        <description>Christopher G. McIntyre&#x27;s Personal Website
+        <description>Chris G. McIntyre&#x27;s Personal Website
 </description>
         <generator>Zola</generator>
         <language>en</language>

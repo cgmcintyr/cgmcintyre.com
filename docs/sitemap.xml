@@ -1,18 +1,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://cgmcintyre.com/posts/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://cgmcintyre.com/posts/hello-zola/</loc>
-            
-                <lastmod>2019-04-11</lastmod>
-            
-        </url>
-    
-        <url>
             <loc>https://cgmcintyre.com/</loc>
             
         </url>
@@ -28,12 +16,19 @@
         </url>
     
         <url>
+            <loc>https://cgmcintyre.com/posts/</loc>
+            
+        </url>
+    
+        <url>
             <loc>https://cgmcintyre.com/tags/ansible/</loc>
             
         </url>
     
         <url>
-            <loc>https://cgmcintyre.com/tags/rust/</loc>
+            <loc>https://cgmcintyre.com/posts/hello-zola/</loc>
+            
+                <lastmod>2019-04-11</lastmod>
             
         </url>
     
@@ -41,6 +36,11 @@
             <loc>https://cgmcintyre.com/posts/ansible-sharing-internet/</loc>
             
                 <lastmod>2019-04-11</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://cgmcintyre.com/tags/rust/</loc>
             
         </url>
     
